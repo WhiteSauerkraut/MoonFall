@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection;
 
     private float walkSpeed = 3;
-    private float runSpeed = 10;
-    private float backSpeed = -2;
+    private float runSpeed = 6;
     private float gravity = 9.8f;
 
     // Start is called before the first frame update
@@ -57,7 +56,7 @@ public class PlayerController : MonoBehaviour
                 this.transform.rotation = q;
                 moveDirection = new Vector3(0.0f, 0.0f, -1);
                 moveDirection = transform.TransformDirection(moveDirection);
-                moveDirection = moveDirection * backSpeed;
+                moveDirection = moveDirection * (-walkSpeed);
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     moveDirection = moveDirection * runSpeed;
