@@ -51,18 +51,26 @@ public class MoveCar : MonoBehaviour
         }
         else
         {
-            // 限制最大车速
-            car_rigidbody.drag = car_rigidbody.velocity.magnitude / 250;
-
-            // 前轮转向
             float steer = Input.GetAxis("Horizontal");
-            FRwheelCollider.steerAngle = steer * 30;
-            FLwheelCollider.steerAngle = steer * 30;
+            float accelerate = Input.GetAxis("Vertical");
 
-            // 后轮驱动
-            float accelerate = Input.GetAxis("Vertical"); ;
-            BRwheelCollider.motorTorque = accelerate * 1000;
-            BLwheelCollider.motorTorque = accelerate * 1000;
+            if(steer != 0 || accelerate != 0)
+            {
+                // 限制最大车速
+                car_rigidbody.drag = car_rigidbody.velocity.magnitude / 250;
+
+                // 前轮转向
+                FRwheelCollider.steerAngle = steer * 30;
+                FLwheelCollider.steerAngle = steer * 30;
+
+                // 后轮驱动
+                BRwheelCollider.motorTorque = accelerate * 1000;
+                BLwheelCollider.motorTorque = accelerate * 1000;
+            }
+            else
+            {
+                car_rigidbody.drag = 0.3f;
+            }
         }
     }
 
