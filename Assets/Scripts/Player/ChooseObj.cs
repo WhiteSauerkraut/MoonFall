@@ -14,23 +14,40 @@ public class ChooseObj : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         chooseObj = collider.gameObject;
-        if (chooseObj != null && chooseObj.tag.Equals("Car"))
+        if(chooseObj != null)
         {
-            chooseObj.GetComponent<Outline>().enabled = true;
-            chooseObj.GetComponent<Outline>().eraseRenderer = false;
+            if (chooseObj.tag.Equals("Car"))
+            {
+                chooseObj.GetComponent<Outline>().enabled = true;
+                chooseObj.GetComponent<Outline>().eraseRenderer = false;
+            }
+            else if (chooseObj.tag.Equals("Npc"))
+            {
+                chooseObj.transform.GetChild(1).GetComponent<Outline>().enabled = true;
+                chooseObj.transform.GetChild(1).GetComponent<Outline>().eraseRenderer = false;
+            }
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
         bool isInCar = GetComponent<Interact>().isInCar;
-        if (chooseObj != null && chooseObj.tag.Equals("Car"))
+        if(chooseObj != null)
         {
-            chooseObj.GetComponent<Outline>().enabled = false;
-            if (!isInCar)
+            if (chooseObj.tag.Equals("Car"))
             {
+                chooseObj.GetComponent<Outline>().enabled = false;
+                if (!isInCar)
+                {
+                    chooseObj = null;
+                }
+            }
+            else if (chooseObj.tag.Equals("Npc"))
+            {
+                chooseObj.transform.GetChild(1).GetComponent<Outline>().enabled = false;
                 chooseObj = null;
             }
         }
+        
     }
 }

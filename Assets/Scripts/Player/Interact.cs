@@ -20,23 +20,37 @@ public class Interact : MonoBehaviour
     void Update()
     {
         chooseObj = chooseComponent.chooseObj;
-        if(chooseObj != null && chooseObj.tag.Equals("Car"))
+
+        if(chooseObj != null)
         {
-            // 按下F键上车,切换控制物体为车辆
-            if(Input.GetKeyDown(KeyCode.F) && !isInCar)
+            if (chooseObj.tag.Equals("Car"))
             {
-                HidePlayer();
-                ChangeControllToCar();
-                isInCar = true;
+                // 按下F键上车,切换控制物体为车辆
+                if (Input.GetKeyDown(KeyCode.F) && !isInCar)
+                {
+                    HidePlayer();
+                    ChangeControllToCar();
+                    isInCar = true;
+                }
+                // 按下F键下车,切换控制物体为人物
+                else if (Input.GetKeyDown(KeyCode.F) && isInCar)
+                {
+                    ShowPlayer();
+                    ChangeControllToPlayer();
+                    isInCar = false;
+                }
             }
-            // 按下F键下车,切换控制物体为人物
-            else if (Input.GetKeyDown(KeyCode.F) && isInCar)
+            // 交流
+            else if (chooseObj.tag.Equals("Npc"))
             {
-                ShowPlayer();
-                ChangeControllToPlayer();
-                isInCar = false;
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    TalkManager talkManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<TalkManager>();
+                    talkManager.Show();
+                }
             }
         }
+        
     }
 
     /**
