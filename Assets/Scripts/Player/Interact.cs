@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * 人物交互控制
+ * */
+
 public class Interact : MonoBehaviour
 {
     GameObject chooseObj;

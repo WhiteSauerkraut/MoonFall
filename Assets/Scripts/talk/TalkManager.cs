@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /**
- * 谈话窗口控制
+ * 对话窗口控制
  * */
 
 public class TalkManager : MonoBehaviour
@@ -57,13 +57,9 @@ public class TalkManager : MonoBehaviour
         chooseObj = GameObject.FindGameObjectWithTag("Player").GetComponent<ChooseObj>().chooseObj;
 
         talk_list = new List<TalkCompoent>();
-        Debug.Log(chooseObj.name);
-        TextAsset itemText = Resources.Load<TextAsset>(chooseObj.name);
+        TextAsset itemText = Resources.Load<TextAsset>("talk/" + chooseObj.name);
         string itemJson = itemText.text;
         JSONObject j = new JSONObject(itemJson);
-        Debug.Log("itemJson " + itemJson);
-        Debug.Log("itemText " + itemText);
-        Debug.Log("JSONObject " + j);
         foreach (var temp in j.list)
         {
             string talker_name = temp["name"].str;
