@@ -9,6 +9,7 @@ TagManager:
   - Npc
   - Canvas
   - Launchpad
+  - FireSet
   layers:
   - Default
   - TransparentFX

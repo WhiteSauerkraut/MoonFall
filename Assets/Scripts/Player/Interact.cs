@@ -125,6 +125,7 @@ public class Interact : MonoBehaviour
 
         GameObject rocket = GameObject.Find("rocket");
         rocket.transform.Find("FollowObjs").gameObject.SetActive(true);
-        // 激活启动火箭脚本
+        // 激活火箭启动脚本
+        rocket.GetComponent<RocketStart>().enabled = true;
     }
 }

@@ -54,7 +54,7 @@ public class MoveCar : MonoBehaviour
             BLwheelCollider.motorTorque = 0;
             car_rigidbody.drag = 1;
 
-            aud.clip = Resources.Load<AudioClip>("Sounds/" + "brake") as AudioClip;
+            aud.clip = Resources.Load<AudioClip>("Sounds/" + "car_brake") as AudioClip;
             if (aud.isPlaying == false)
             {
                 aud.time = 1f;
@@ -79,7 +79,7 @@ public class MoveCar : MonoBehaviour
                 BRwheelCollider.motorTorque = accelerate * 1000;
                 BLwheelCollider.motorTorque = accelerate * 1000;
 
-                aud.clip = Resources.Load<AudioClip>("Sounds/" + "start_engine") as AudioClip;
+                aud.clip = Resources.Load<AudioClip>("Sounds/" + "car_start_engine") as AudioClip;
                 // 音频剪辑
                 if (aud.isPlaying == false)
                 {
