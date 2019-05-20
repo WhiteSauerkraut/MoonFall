@@ -8,6 +8,7 @@ TagManager:
   - Set
   - Npc
   - Canvas
+  - Launchpad
   layers:
   - Default
   - TransparentFX

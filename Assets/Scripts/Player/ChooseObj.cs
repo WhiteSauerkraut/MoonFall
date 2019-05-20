@@ -21,7 +21,7 @@ public class ChooseObj : MonoBehaviour
                 chooseObj.GetComponent<Outline>().enabled = true;
                 chooseObj.GetComponent<Outline>().eraseRenderer = false;
             }
-            else if (chooseObj.tag.Equals("Npc"))
+            else if (chooseObj.tag.Equals("Npc") || chooseObj.tag.Equals("Launchpad"))
             {
                 chooseObj.transform.GetChild(1).GetComponent<Outline>().enabled = true;
                 chooseObj.transform.GetChild(1).GetComponent<Outline>().eraseRenderer = false;
@@ -42,7 +42,7 @@ public class ChooseObj : MonoBehaviour
                     chooseObj = null;
                 }
             }
-            else if (chooseObj.tag.Equals("Npc"))
+            else if (chooseObj.tag.Equals("Npc") || chooseObj.tag.Equals("Launchpad"))
             {
                 chooseObj.transform.GetChild(1).GetComponent<Outline>().enabled = false;
                 chooseObj = null;

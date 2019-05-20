@@ -21,7 +21,7 @@ public class MiniMapManager : MonoBehaviour
     // 车辆
     public GameObject car;
     // 交互控制
-    public Interact interact;
+    private Interact interact;
     // 地形  
     public GameObject plane;
     // 地形的宽  
@@ -33,6 +33,8 @@ public class MiniMapManager : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        car = GameObject.FindGameObjectWithTag("Car");
         interact = player.GetComponent<Interact>();
         // 获取地形的宽高    
         planeWidth = plane.GetComponent<MeshFilter>().mesh.bounds.size.x * plane.transform.localScale.x;

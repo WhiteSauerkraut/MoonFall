@@ -53,6 +53,15 @@ public class Interact : MonoBehaviour
                     talkManager.Show();
                 }
             }
+            // 启动火箭
+            else if (chooseObj.tag.Equals("Launchpad"))
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    HidePlayer();
+                    ChangeControllToRocket();
+                }
+            }
         }
         
     }
@@ -103,5 +112,19 @@ public class Interact : MonoBehaviour
         player.GetComponent<SoundsControl>().enabled = true;
         chooseObj.GetComponent<MoveCar>().enabled = false;
         chooseObj.transform.Find("FollowObjs").gameObject.SetActive(false);
+    }
+
+    /**
+     * 切换控制为火箭
+     * */
+    void ChangeControllToRocket()
+    {
+        player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<SoundsControl>().enabled = false;
+        player.GetComponent<AudioSource>().enabled = false;
+
+        GameObject rocket = GameObject.Find("rocket");
+        rocket.transform.Find("FollowObjs").gameObject.SetActive(true);
+        // 激活启动火箭脚本
     }
 }
