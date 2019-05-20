@@ -23,6 +23,9 @@ public class MoveCar : MonoBehaviour
     // 获取刚体对象
     private Rigidbody car_rigidbody;
 
+    // 音频源
+    AudioSource aud;
+
     void Start()
     {
         BRwheelCollider = BRWheel.GetComponent<WheelCollider>();
@@ -33,6 +36,8 @@ public class MoveCar : MonoBehaviour
         // 设置重心
         car_rigidbody = GetComponent<Rigidbody>();
         car_rigidbody.centerOfMass = Vector3.zero;
+
+        aud = GetComponent<AudioSource>();
     }
 
     void Uptate()
@@ -48,6 +53,13 @@ public class MoveCar : MonoBehaviour
             BRwheelCollider.motorTorque = 0;
             BLwheelCollider.motorTorque = 0;
             car_rigidbody.drag = 1;
+
+            aud.clip = Resources.Load<AudioClip>("Sounds/" + "brake") as AudioClip;
+            if (aud.isPlaying == false)
+            {
+                aud.time = 1f;
+                aud.Play();
+            }
         }
         else
         {
@@ -66,10 +78,23 @@ public class MoveCar : MonoBehaviour
                 // 后轮驱动
                 BRwheelCollider.motorTorque = accelerate * 1000;
                 BLwheelCollider.motorTorque = accelerate * 1000;
+
+                aud.clip = Resources.Load<AudioClip>("Sounds/" + "start_engine") as AudioClip;
+                // 音频剪辑
+                if (aud.isPlaying == false)
+                {
+                    aud.time = 0.1f;
+                    aud.Play();
+                }
+                else if(aud.time >= 2.0f)
+                {
+                    aud.time = 0.1f;
+                }
             }
             else
             {
                 car_rigidbody.drag = 0.3f;
+                aud.Stop();
             }
         }
     }

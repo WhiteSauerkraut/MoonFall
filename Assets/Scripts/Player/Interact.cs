@@ -87,6 +87,8 @@ public class Interact : MonoBehaviour
     void ChangeControllToCar()
     {
         player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<SoundsControl>().enabled = false;
+        player.GetComponent<AudioSource>().enabled = false;
         chooseObj.GetComponent<MoveCar>().enabled = true;
         chooseObj.transform.Find("FollowObjs").gameObject.SetActive(true);
     }
@@ -97,6 +99,8 @@ public class Interact : MonoBehaviour
     void ChangeControllToPlayer()
     {
         player.GetComponent<PlayerController>().enabled = true;
+        player.GetComponent<AudioSource>().enabled = false;
+        player.GetComponent<SoundsControl>().enabled = true;
         chooseObj.GetComponent<MoveCar>().enabled = false;
         chooseObj.transform.Find("FollowObjs").gameObject.SetActive(false);
     }
