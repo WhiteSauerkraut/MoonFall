@@ -23,6 +23,9 @@ public class MoveCar : MonoBehaviour
     // 获取刚体对象
     private Rigidbody car_rigidbody;
 
+    // 刹车标志
+    private bool isBrake = false;
+
     // 音频源
     AudioSource aud;
 
@@ -55,14 +58,16 @@ public class MoveCar : MonoBehaviour
             car_rigidbody.drag = 1;
 
             aud.clip = Resources.Load<AudioClip>("Sounds/" + "car_brake") as AudioClip;
-            if (aud.isPlaying == false)
+            if (aud.isPlaying == false && !isBrake)
             {
-                aud.time = 1f;
                 aud.Play();
             }
+            isBrake = true;
         }
         else
         {
+            isBrake = false;
+
             float steer = Input.GetAxis("Horizontal");
             float accelerate = Input.GetAxis("Vertical");
 

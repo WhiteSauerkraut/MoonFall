@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 火箭启动发射脚本
@@ -10,13 +11,13 @@ public class RocketStart : MonoBehaviour
     // 启动时间
     public float launch_time = 10f;
     // 推射器脱离时间
-    public float drop_time = 5f;
+    public float drop_time = 10f;
     // 飞行时间
-    public float fly_time = 5f;
+    public float fly_time = 20f;
     // 发射速度
     public float speed = 10;
     // 加速后速度
-    public float second_speed = 20;
+    public float second_speed = 40;
     // 发射状态
     public bool isLaunch = false;
     // 推射器
@@ -71,20 +72,19 @@ public class RocketStart : MonoBehaviour
         yield return new WaitForSeconds(4f);
         
         // 飞行
-        aud.clip = Resources.Load<AudioClip>("Sounds/" + "rocket_flying") as AudioClip;
-        aud.time = 0.5f;
-        if (aud.isPlaying == false)
-        {
-            aud.Play();
-        }
-        aud.loop = true;
+        //aud.clip = Resources.Load<AudioClip>("Sounds/" + "rocket_flying") as AudioClip;
+        //aud.time = 0.5f;
+        //if (aud.isPlaying == false)
+        //{
+        //    aud.Play();
+        //}
 
         yield return new WaitForSeconds(drop_time);
         DropLauncher();
 
         yield return new WaitForSeconds(fly_time);
         // 场景跳转到太空
-
+        StartCoroutine(LoadScene());
     }
 
     /**
@@ -135,5 +135,14 @@ public class RocketStart : MonoBehaviour
         {
             fireset.transform.GetChild(0).gameObject.SetActive(true);
         }
+    }
+
+    /**
+     * 切换场景
+     * */
+    IEnumerator LoadScene()
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync("UniverseScene");
+        yield return async;
     }
 }

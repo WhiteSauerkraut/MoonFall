@@ -1,0 +1,18 @@
+﻿[
+	{
+		"name":"我",
+		"talk_content":"你好！美丽的夫人！"
+	},
+	{
+		"name":"夫人",
+		"talk_content":"你好，远道而来的少年！"
+	},
+	{
+		"name":"我",
+		"talk_content":"这里风景不错呀！"
+	},
+	{
+		"name":"夫人",
+		"talk_content":"请尽情游览这里吧！"
+	}
+]
