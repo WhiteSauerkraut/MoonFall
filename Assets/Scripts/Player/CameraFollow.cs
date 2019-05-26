@@ -32,6 +32,5 @@ public class CameraFollow : MonoBehaviour
 
         this.transform.position = this.transform.parent.position - direction * distance;
         this.transform.LookAt(this.transform.parent);
-
     }
 }

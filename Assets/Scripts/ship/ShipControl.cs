@@ -28,7 +28,7 @@ public class ShipControl : MonoBehaviour
             transform.Rotate(new Vector3(-V, H, 0) * Time.deltaTime * rotateSpeed, Space.Self);
             
         }
-        // 空格键控制方向
+        // 空格键控制飞行
         if(Input.GetKey(KeyCode.Space))
         {
             transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * moveSpeed, Space.Self);

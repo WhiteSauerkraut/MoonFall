@@ -60,7 +60,6 @@ public class ShipInteract : MonoBehaviour
             StartCoroutine(Rotate_Moon());
             GetComponent<ShipControl>().enabled = false;
             transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, -90, transform.rotation.z));
-            Debug.Log("00");
         }
     }
 

@@ -71,14 +71,7 @@ public class RocketStart : MonoBehaviour
         }
         yield return new WaitForSeconds(4f);
         
-        // 飞行
-        //aud.clip = Resources.Load<AudioClip>("Sounds/" + "rocket_flying") as AudioClip;
-        //aud.time = 0.5f;
-        //if (aud.isPlaying == false)
-        //{
-        //    aud.Play();
-        //}
-
+        // 推射器脱落
         yield return new WaitForSeconds(drop_time);
         DropLauncher();
 
